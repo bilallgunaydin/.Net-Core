@@ -9,5 +9,4 @@ namespace WebApi.Application.GenreOperations.Queries.GetGenreDetail
             RuleFor(query => query.GenreId).GreaterThan(0);
         }
     }
-    
 }

@@ -20,7 +20,7 @@ namespace WebApi.Application.AuthorOperations.Queries.GetAuthorDetail
 
         public AuthorDetailViewModel Handle()
         {
-            var author = _context.Authors.Include(x=>x.Book).Where(author=> author.BookId==AuthorId).FirstOrDefault();
+            var author = _context.Authors.Include(x=>x.Book).Where(author=> author.Id==AuthorId).FirstOrDefault();
             if(author is null)
             throw new InvalidOperationException("Yazar Bulunamadı!");
 

@@ -2,7 +2,6 @@ using AutoMapper;
 using System;
 using System.Linq;
 using WebApi.Entities;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using WebApi.DBOperations;
 
 namespace  WebApi.Application.AuthorOperations.Commands.CreateAuthor
@@ -14,12 +13,6 @@ namespace  WebApi.Application.AuthorOperations.Commands.CreateAuthor
 
         private readonly IMapper _mapper;
 
-        private readonly ILazyLoader _lazyLoader;
-        
-        public CreateAuthorCommand(ILazyLoader lazyLoader)
-        {
-             _lazyLoader = lazyLoader;
-        }
         public CreateAuthorCommand(IBookStoreDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;

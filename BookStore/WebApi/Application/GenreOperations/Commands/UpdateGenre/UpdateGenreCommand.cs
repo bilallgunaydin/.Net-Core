@@ -31,7 +31,6 @@ namespace WebApi.Application.GenreOperations.UpdateGenre
         }
         
     }
-
     public class UpdateGenreModel
     {
         public string Name {get; set;}

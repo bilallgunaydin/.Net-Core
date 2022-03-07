@@ -30,5 +30,4 @@ namespace WebApi.Application.GenreOperations.Queries.GetGenres
         public int Id { get; set; }
         public string Name { get; set; }
     }
-
 }

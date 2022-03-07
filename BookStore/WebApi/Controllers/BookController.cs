@@ -8,17 +8,16 @@ using WebApi.Application.BookOperations.Queries.GetBookDetail;
 using static WebApi.Application.BookOperations.Commands.CreateBook.CreateBookCommand;
 using WebApi.Application.BookOperations.Commands.UpdateBook;
 using WebApi.Application.BookOperations.Commands.DeleteBook;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class BookController:ControllerBase
     {
         private readonly IBookStoreDbContext _context;
-
-        
         private readonly IMapper _mapper;
         public BookController(IBookStoreDbContext context, IMapper mapper)
         {

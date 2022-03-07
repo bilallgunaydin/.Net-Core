@@ -10,6 +10,7 @@ using WebApi.Application.AuthorOperations.Queries.GetAuthorDetail;
 using WebApi.Application.AuthorOperations.Commands.CreateAuthor;
 using WebApi.Application.AuthorOperations.Commands.UpdateAuthor;
 using WebApi.Application.GenreOperations.CreateGenre;
+using static WebApi.Application.UserOperations.Commands.CreateUser.CreateUserCommand;
 
 namespace WebApi.Common
 {
@@ -31,6 +32,7 @@ namespace WebApi.Common
             opt.MapFrom(src=> src.Book.Title));
             CreateMap<CreateAuthorModel,Author>();
             CreateMap<UpdateAuthorModel,Author>();
+            CreateMap<CreateUserModel,User>();
         }
     }
 }

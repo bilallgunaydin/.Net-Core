@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApi.DBOperations;
-
 using AutoMapper;
 using FluentValidation;
 using WebApi.Application.AuthorOperations.Queries.GetAuthors;
@@ -8,10 +7,11 @@ using WebApi.Application.AuthorOperations.Queries.GetAuthorDetail;
 using WebApi.Application.AuthorOperations.Commands.CreateAuthor;
 using WebApi.Application.AuthorOperations.Commands.UpdateAuthor;
 using WebApi.Application.AuthorOperations.Commands.DeleteAuthor;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]s")]
     public class AuthorController:ControllerBase
@@ -27,9 +27,10 @@ namespace WebApi.Controllers
         [HttpGet]
         public IActionResult GetAuthors()
         {
+
             GetAuthorsQuery query =new GetAuthorsQuery(_context, _mapper);
             var result= query.Hundle();
-            return Ok(result);
+            return Ok(result);   
         }
 
         [HttpGet("{id}")]
@@ -44,8 +45,8 @@ namespace WebApi.Controllers
             return Ok(obj);
         }
 
+        
         [HttpPost]
-
         public IActionResult AddAuthor([FromBody] CreateAuthorModel newAuthor)
         {
             CreateAuthorCommand command= new CreateAuthorCommand(_context,_mapper);
@@ -53,7 +54,6 @@ namespace WebApi.Controllers
             CreateAuthorCommandValidator validator = new CreateAuthorCommandValidator();
             validator.ValidateAndThrow(command);
             command.Handle();
-
             return Ok();
         }
         

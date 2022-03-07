@@ -12,7 +12,7 @@ namespace WebApi.Application.GenreOperations.DeleteGenre
         {
             _context = context;
         }
-        
+
         public void Handle()
         {
             var genre = _context.Genres.SingleOrDefault(x => x.Id == GenreId);
@@ -21,7 +21,6 @@ namespace WebApi.Application.GenreOperations.DeleteGenre
             
             _context.Genres.Remove(genre);
             _context.SaveChanges();
-
         }
     }
 }
